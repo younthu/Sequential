@@ -117,7 +117,9 @@ NSString *const PGMaxDepthKey = @"PGMaxDepth";
 	if(!inclusive) i += increment;
 	for(; NSLocationInRange(i, range); i += increment) {
 		PGResourceAdapter *const adapter = [[children objectAtIndex:i] resourceAdapter];
-		IMP const search = [adapter methodForSelector:sel];
+        PGNode* (*search)(id, SEL, BOOL, id,id);
+//        IMP const search = [adapter methodForSelector:sel];
+        search = (PGNode* (*)(id, SEL, BOOL, id,id))[adapter methodForSelector:sel];
 		if(!search) continue;
 		PGNode *const node = search(adapter, sel, forward, context, nil);
 		if(node) return node;

@@ -622,6 +622,7 @@ static inline NSSize PGConstrainSize(NSSize min, NSSize size, NSSize max)
 			switch(type) {
 				case NSKeyDown: dir |= newDir;  break;
 				case NSKeyUp:   dir &= ~newDir; break;
+                default: break;
 			}
 		} else {
 			switch(dir) {
@@ -1331,7 +1332,7 @@ static inline NSSize PGConstrainSize(NSSize min, NSSize size, NSSize max)
 	[_imageView setUsesCaching:YES];
 	CGFloat const deg = [_imageView rotationInDegrees];
 	[_imageView setRotationInDegrees:0.0f];
-	PGOrientation o;
+	PGOrientation o = 0;
 	switch((NSInteger)round((deg + 360.0f) / 90.0f) % 4) {
 		case 0: o = PGUpright; break;
 		case 1: o = PGRotated90CCW; break;

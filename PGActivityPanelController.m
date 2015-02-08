@@ -127,7 +127,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 		}
 		return [[[NSAttributedString alloc] initWithString:[item activityDescription] attributes:attrs] autorelease];
 	} else if(tableColumn == progressColumn) {
-		return [NSNumber numberWithDouble:[item progress]];
+        PGActivity *activy = item;
+		return [NSNumber numberWithDouble:[activy progress]];
 	}
 	return nil;
 }
